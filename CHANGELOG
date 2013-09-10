@@ -1,0 +1,36 @@
+Changelog OpenNESS
+
+v0.2.1 (2012-08-04)
+  * Corrección módulos search y test que impedía encontrar archivos
+    "*.log" en el directorio main::SCAN_DIR con lo que se impedía
+    hacer búsquedas y encontrar equipos.
+  * Se agrega autodie al procesar todos los archivos, de esta forma si
+    alguno de los archivos XML que se está procesando falla se detendrá
+    todo el script (parando posteriores ejecuciones).
+  * Se inicio módulo subdomains, este permitirá encontrar subdominios de
+    un dominio. El módulo está en desarrollo y no debiese ser usado, por
+    la misma razón no se encuentra dentro de la documentación ni ayuda.
+
+
+v0.2 (2012-07-31)
+  * Reordenamiento de archivos en directorio lib y var.
+  * Acción email: para envío de correo electrónico anónimo.
+  * base/net.pl:
+      - email_send() mejorada para el envío de correos. 
+      - ip_local() para determinar ips pertenecientes a ips privadas
+      - ip_loopback() para determinar si la ip es de loopback
+  * base/general.pl:
+      - date_r() para generar fecha en formato:
+          Fri, 27 Jul 2012 00:00:00 -0400
+      - str_random() para generar cadenas de texto.
+  * Funcionalidad para subir escaneos a base de datos remota.
+
+
+v0.1 (2012-07-26)
+  * Acciones:
+      - scan: escaneo de equipos y redes.
+      - search: búsqueda en reportes generados.
+      - test: pruebas para servicios:
+          smtp: servidor sin autenticación y relay permitido.
+          mysql: ataque de diccionario.
+          rdp: prueba de usuaro "Administrador" e "Invitado".

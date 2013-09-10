@@ -1,0 +1,63 @@
+#!/usr/bin/perl
+#
+# OpenNESS v0.2.1
+# Copyright (C) 2012 Esteban De La Fuente Rubio (esteban[at]delaf.cl)
+#
+# Archivo principal de la herramienta, encargado de inicializar y lanzar
+# el módulo solicitado.
+#
+package main;
+
+# Módulos del sistema que se utilizarán
+use Modern::Perl;
+no strict 'refs';
+
+# Definir directorio raíz de la aplicación
+use FindBin;
+use constant ROOT_DIR => $FindBin::RealBin;
+
+# Definir directorio donde se encuentran los XML de nmap
+use constant NMAP_DIR => ROOT_DIR.'/var/modules/scan/nmap';
+
+# Definir directorio donde se encuentran los reportes de escaneos
+use constant SCAN_DIR => ROOT_DIR.'/var/modules/scan/reports';
+
+# Cargar módulos y librerías propias usadas por todos los módulos
+use lib ROOT_DIR.'/lib';
+use lib ROOT_DIR.'/lib/modules';
+use base::Conf();
+use base::Services();
+use base::Remote();
+require 'base/base.pl';
+require 'standard/standard.pl';
+require 'standard/net.pl';
+
+# Iniciar aplicación
+init();
+
+# Rutina que inicia la aplicación y carga el módulo solicitado
+sub init {
+	# limpiar pantalla
+	system('clear');
+	# mostrar cabecera del programa
+	header();
+	# modulo que se debe ejecutar
+	my $module = defined $ARGV[0] ? ucfirst($ARGV[0]) : 'Help';
+	# incluir el módulo y si existe ejecutar su rutina principal
+	if ( -e ROOT_DIR.'/lib/modules/'.$module.'.pm' ) {
+		# incluir módulo
+		require 'modules/'.$module.'.pm';
+		# verificar que exista la función main dentro del módulo
+		my $main = $module.'::main';
+		if (function_exists($main)) {
+			&$main();
+		} else {
+			print 'El módulo "'.lc($module).'" no puede ser inicializado.',"\n";
+		}
+		print "\n";
+		exit 0;
+	}
+	# si se llego acá es porque no se encontró el módulo solicitada
+	options_error ('El módulo "'.lc($module).'" no existe.');
+	
+}
