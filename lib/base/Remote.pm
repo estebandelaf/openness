@@ -3,7 +3,8 @@ use HTTP::Request::Common;
 use LWP::UserAgent;
 use JSON;
 use MIME::Base64;
-use Data::Dumper;
+use Try::Tiny;
+#use Data::Dumper;
 
 # Definir URI que se utilizará para la comunicación con el servidor
 use constant URI => 'http://'.$Conf::conf->openness_server.'/bd/webservice';
@@ -31,16 +32,21 @@ sub sendXML {
 	# revisar que se haya podido enviar la consulta
 	if ($res->is_success) {
 		# recibir respuesta y procesar json a tipo de dato Perl
-		my $response = decode_json $res->decoded_content;
-		$response->{data} = decode_base64 $response->{data} if $response->{header}{encoding} eq 'base64';
-		$response->{data} = decode_json $response->{data};
-		# verificar que se la consulta haya sido exitosa
-        if( $response->{header}->{status} eq 'ok' ) {
-			print 'Se ha enviado el XML al servidor ',$Conf::conf->openness_server,"\n";
-			return 0;
-		} else {
-			print STDERR '[warning] problemas al recibir el XML en el servidor.',$Conf::conf->openness_server,', error: ',$response->{header}->{error}->{mesg},"\n";
-		}
+		try {
+			my $response = decode_json $res->decoded_content;
+                        $response->{data} = decode_base64 $response->{data} if $response->{header}{encoding} eq 'base64';
+                        $response->{data} = decode_json $response->{data};
+                        # verificar que se la consulta haya sido exitosa
+                        if ($response->{header}->{status} eq 'ok') {
+                                print 'Se ha enviado el XML al servidor ',$Conf::conf->openness_server,"\n";
+                                return 0;
+                        } else {
+                                print STDERR '[warning] problemas al recibir el XML en el servidor.',$Conf::conf->openness_server,', error: ',$response->{header}->{error}->{mesg},"\n";
+                        }
+		} catch {
+                        print STDERR '[warning] respuesta incorrecta del servidor ',$Conf::conf->openness_server,', error: no se recibió JSON, se recibió:',"\n\n",$res->decoded_content,"\n";
+                        return 1;
+                };
     } else {
         print STDERR '[warning] no se ha podido enviar el XML al servidor ',$Conf::conf->openness_server,', error: ',$res->status_line,"\n";
     }
