@@ -41,7 +41,7 @@ sub sendXML {
                                 print 'Se ha enviado el XML al servidor ',$Conf::conf->openness_server,"\n";
                                 return 0;
                         } else {
-                                print STDERR '[warning] problemas al recibir el XML en el servidor.',$Conf::conf->openness_server,', error: ',$response->{header}->{error}->{mesg},"\n";
+                                print STDERR '[warning] problemas al recibir el XML en el servidor ',$Conf::conf->openness_server,', error: ',$response->{header}->{error}->{mesg},"\n";
                         }
 		} catch {
                         print STDERR '[warning] respuesta incorrecta del servidor ',$Conf::conf->openness_server,', error: no se recibió JSON, se recibió:',"\n\n",$res->decoded_content,"\n";

@@ -13,7 +13,7 @@
 #
 
 # argumentos que se utilizarán con OpenNESS
-ARGS="--all-ports --version-all --host-timeout 5 --up"
+ARGS="--all-ports --version-all --host-timeout 60 --up"
 # ¿usar tsocks? (default: no)
 #TSOCKS="yes"
 
