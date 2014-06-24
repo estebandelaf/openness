@@ -1,9 +1,6 @@
 # no enviar datos generados por módulos
 var/modules/*
 
-# no enviar datos de redes que se desean escanear
-var/database/networks
-
 # no enviar datos temporales
 tmp
 
