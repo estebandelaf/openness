@@ -35,8 +35,8 @@ sub do {
 		# acciones si se desea escanear solo un puerto
 		if (defined $self->{port}) {
 			$args .= ' -p '.$self->{port} if defined $self->{port};
-			$file = $self->{port}.'/'.$file;
-			mkdir main::NMAP_DIR.'/'.$self->{port};
+			$file = 'custom_ports/'.$file;
+			mkdir main::NMAP_DIR.'/custom_ports';
 		}
 		$self->{XMLFile} = main::NMAP_DIR.'/'.$file;
 		$args .= ' -oX '.$self->{XMLFile};

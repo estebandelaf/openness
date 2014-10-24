@@ -77,8 +77,8 @@ sub main {
 	my $file_result = $nmap_target.'.log';
 	$file_result =~ s/\//_/;
 	if (defined $port) {
-		$file_result = $port.'/'.$file_result;
-		mkdir main::SCAN_DIR.'/'.$port;
+		$file_result = 'custom_ports/'.$file_result;
+		mkdir main::SCAN_DIR.'/custom_ports';
 	}
 	$file_result = main::SCAN_DIR.'/'.$file_result;
 	# abrir archivo
