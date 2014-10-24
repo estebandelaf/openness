@@ -14,7 +14,7 @@
 
 # argumentos que se utilizarán con OpenNESS
 PORTS=`cat var/database/ports/tcp | tr '\n' ','`
-ARGS="--port $PORTS --host-timeout 3 --up"
+ARGS="--port $PORTS --host-timeout 5 --up"
 # ¿usar tsocks? (default: no)
 #TSOCKS="yes"
 
