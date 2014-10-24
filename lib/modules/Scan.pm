@@ -17,7 +17,7 @@ sub main {
 		'host=s' => \$host,
 		'net=s' => \$net,
 		'all-ports' => \$all_ports,
-		'port=i' => \$port,
+		'port=s' => \$port,
 		'host-timeout=i' => \$host_timeout,
 		'version-all' => \$version_all,
 		'file=s' => \$file,
