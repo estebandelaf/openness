@@ -1,4 +1,4 @@
-OpenNESS v0.2.1
+OpenNESS v0.2.2
 ===============
 
 OpenNESS corresponde a una herramienta en Perl muy sencilla para el escaneo de
