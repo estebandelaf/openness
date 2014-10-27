@@ -1,6 +1,6 @@
 #
 # Config
-# Copyright (C) 2012 Esteban De La Fuente Rubio (esteban[at]delaf.cl)
+# Copyright (C) 2014 Esteban De La Fuente Rubio (esteban[at]delaf.cl)
 #
 # Archivo que define variables de configuración y las carga desde el
 # archivo de configuración de la aplicación (si existe).
@@ -18,13 +18,13 @@ use AppConfig qw(:expand :argcount);
 $conf = AppConfig->new(
 	# Opciones del objeto de configuración
 	{
-		GLOBAL => { 
+		GLOBAL => {
 			ARGCOUNT => ARGCOUNT_ONE
 		}
 	},
 	# Variables y sus valores por defecto
 	# Opciones generales
-	'openness_server'		=> { DEFAULT => 'openness.delaf.cl' },
+	'openness_server'		=> { DEFAULT => 'http://openness.cl' },
 	'openness_user_hash'	=> { DEFAULT => '' },
 	# Opciones del módulo "scan"
 	'scan_up'				=> { DEFAULT => 0 },
