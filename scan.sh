@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# OpenNESS v0.2.2
+# OpenNESS v0.2.3
 # Copyright (C) 2014 Esteban De La Fuente Rubio (esteban[at]delaf.cl)
 #
 # Script para lanzar un escaneo sobre un grupo de redes.

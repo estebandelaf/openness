@@ -7,7 +7,7 @@ use Try::Tiny;
 #use Data::Dumper;
 
 # Definir URI que se utilizará para la comunicación con el servidor
-use constant URI => 'http://'.$Conf::conf->openness_server.'/bd/webservice';
+use constant URI => $Conf::conf->openness_server.'/bd/webservice';
 
 # Rutina que envía un archivo XML (de nmap) al servidor
 sub sendXML {

@@ -1,5 +1,21 @@
 Changelog OpenNESS
 
+Se muestra resumen de cambio entre versiones, para un detalle completo revisar
+los commits del proyecto en:
+
+  https://github.com/estebandelaf/openness/commits/master
+
+
+v0.2.3 (2014-10-27) (incluye cambios no documentados v0.2.2)
+  * Mejoras menores en control de errores (try/catch), limpieza, etc.
+  * Agregado script para hacer múltiples escaneos sobre redes /24
+  * Agregadas redes de Chile
+  * Se puede especificar más de un puerto con --port
+  * Se corrije nombre de directorio al escaner solo ciertos puertos
+  * Se agrega archivo con puerto TCP para escaneo masivo (para usar con scan.sh)
+  * Se cambia el servidor a openness.cl (¡dominio propio!)
+
+
 v0.2.1 (2012-08-04)
   * Corrección módulos search y test que impedía encontrar archivos
     "*.log" en el directorio main::SCAN_DIR con lo que se impedía
@@ -16,7 +32,7 @@ v0.2 (2012-07-31)
   * Reordenamiento de archivos en directorio lib y var.
   * Acción email: para envío de correo electrónico anónimo.
   * base/net.pl:
-      - email_send() mejorada para el envío de correos. 
+      - email_send() mejorada para el envío de correos.
       - ip_local() para determinar ips pertenecientes a ips privadas
       - ip_loopback() para determinar si la ip es de loopback
   * base/general.pl:
