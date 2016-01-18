@@ -24,7 +24,7 @@ $conf = AppConfig->new(
 	},
 	# Variables y sus valores por defecto
 	# Opciones generales
-	'openness_server'		=> { DEFAULT => 'http://openness.cl' },
+	'openness_server'		=> { DEFAULT => 'https://openness.sasco.cl' },
 	'openness_user_hash'	=> { DEFAULT => '' },
 	# Opciones del módulo "scan"
 	'scan_up'				=> { DEFAULT => 0 },
